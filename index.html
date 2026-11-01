@@ -1575,16 +1575,19 @@
 
             if (supabaseClient) {
                 if (currentAuthMode === 'signup') {
-                    const { error } = await supabaseClient.auth.signUp({ email, password });
-                    if (error) { showAuthMessage(`Registration Error: ${error.message}`, true); return; }
-                    else {
-                        showAuthMessage('Account created! Please check your email for the confirmation link to enter the Sanctum.');
-                        return; // Halt here so the user goes to their email inbox
-                    }
-                } else {
-                    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-                    if (error) { showAuthMessage(`Login Error: ${error.message}`, true); return; }
-                }
+    const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+            data: { callsign: callsignCheck.value }
+        }
+    });
+    if (error) { showAuthMessage(`Registration Error: ${error.message}`, true); return; }
+    else {
+        showAuthMessage('Account created! Please check your email for the confirmation link to enter the Sanctum.');
+        return;
+    }
+}
             }
 
             GameState.playerCallsign = callsignCheck.value;
