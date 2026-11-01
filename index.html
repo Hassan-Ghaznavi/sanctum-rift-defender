@@ -154,18 +154,15 @@
     <!-- 3D Three.js Canvas Container -->
     <div id="canvas-container"></div>
 
-    <!-- Dynamic 3D Raycast Reticle (Follows Mouse or Center in Combat) -->
+    <!-- Dynamic 3D Raycast Reticle -->
     <div id="raycast-reticle" class="hidden"></div>
 
     <!-- Floating Damage / Hit Feedback Layer -->
     <div id="combat-text-layer" class="fixed inset-0 pointer-events-none z-30"></div>
 
-    <!-- ========================================================================== -->
-    <!-- TOP PERSISTENT NAVIGATION BAR (Prompt 2 & Prompt 6)                        -->
-    <!-- ========================================================================== -->
+    <!-- TOP PERSISTENT NAVIGATION BAR -->
     <header class="relative z-40 px-4 pt-3 pb-2 pointer-events-none">
         <div class="max-w-7xl mx-auto glass-card rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 pointer-events-auto">
-            <!-- Brand Title -->
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/50 flex items-center justify-center shadow-inner">
                     <svg class="w-6 h-6 text-amber-400 animate-spin" style="animation-duration: 20s;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
@@ -179,14 +176,13 @@
                     <div class="flex items-center gap-2">
                         <span class="font-mystic font-bold text-sm sm:text-base tracking-wider text-amber-200">SANCTUM RIFT DEFENDER</span>
                         <span id="security-badge" class="text-[10px] font-mono-code px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300">
-                            RLS + OTP SECURED
+                            SECURED ACCESS
                         </span>
                     </div>
                     <p class="text-[11px] text-amber-200/65 hidden sm:block">Three.js 3D Raycasting • Sub-Mesh Hit Detection • Web Audio Synth</p>
                 </div>
             </div>
 
-            <!-- Navigation Tabs -->
             <nav class="flex items-center gap-1.5 sm:gap-2">
                 <button id="btn-audio-toggle" class="btn-secondary px-2.5 py-1.5 rounded-xl text-xs font-mono-code flex items-center gap-1.5" title="Toggle Mystic Synth Audio [M]">
                     <span id="audio-icon">🔊</span>
@@ -213,14 +209,10 @@
         </div>
     </header>
 
-    <!-- ========================================================================== -->
-    <!-- LIVE IN-GAME COMBAT HUD OVERLAY (Prompts 3, 4 & 5)                         -->
-    <!-- ========================================================================== -->
+    <!-- LIVE IN-GAME COMBAT HUD OVERLAY -->
     <div id="hud-overlay" class="fixed inset-x-0 top-20 z-30 px-4 pointer-events-none hidden">
         <div class="max-w-7xl mx-auto flex flex-col gap-2">
-            <!-- Top Telemetry Row -->
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pointer-events-auto">
-                <!-- Wave & Level -->
                 <div class="glass-card rounded-xl px-3.5 py-2">
                     <div class="text-[10px] uppercase tracking-widest text-amber-300/70">Current Wave / Level</div>
                     <div class="flex items-baseline justify-between mt-0.5">
@@ -229,7 +221,6 @@
                     </div>
                 </div>
 
-                <!-- Score & Combo -->
                 <div class="glass-card rounded-xl px-3.5 py-2">
                     <div class="text-[10px] uppercase tracking-widest text-amber-300/70">Mystic Score</div>
                     <div class="flex items-baseline justify-between mt-0.5">
@@ -238,7 +229,6 @@
                     </div>
                 </div>
 
-                <!-- Sanctum Shield Integrity (Health Bar) -->
                 <div class="glass-card rounded-xl px-3.5 py-2">
                     <div class="flex justify-between text-[10px] uppercase tracking-widest text-amber-300/70">
                         <span>Sanctum Shield</span>
@@ -249,7 +239,6 @@
                     </div>
                 </div>
 
-                <!-- Eldritch Mana / Spell Charges (Ammunition) -->
                 <div class="glass-card rounded-xl px-3.5 py-2">
                     <div class="flex justify-between text-[10px] uppercase tracking-widest text-amber-300/70">
                         <span>Eldritch Charges</span>
@@ -260,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- Live Raycast Scanner Readout -->
                 <div class="glass-card rounded-xl px-3.5 py-2 col-span-2 sm:col-span-1 flex flex-col justify-between">
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] uppercase tracking-widest text-amber-300/70">Raycast Scanner</span>
@@ -274,7 +262,6 @@
                 </div>
             </div>
 
-            <!-- Bottom Controls Bar during Combat -->
             <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 w-[95%] max-w-3xl pointer-events-auto">
                 <div class="glass-card rounded-2xl px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
                     <div class="flex items-center gap-3">
@@ -297,30 +284,19 @@
         </div>
     </div>
 
-    <!-- ========================================================================== -->
-    <!-- MAIN SPA VIEW CONTAINER (Auth, Home, Dashboard, Security, Modals)          -->
-    <!-- ========================================================================== -->
     <main class="relative z-30 flex-1 flex items-center justify-center p-4 pointer-events-none">
 
-        <!-- 1. AUTHENTICATION & SUPABASE OTP PORTAL (Prompt 2 & Prompt 8) -->
+        <!-- 1. AUTHENTICATION & REGISTRATION -->
         <section id="view-auth" class="w-full max-w-md glass-card rounded-3xl p-6 sm:p-7 pointer-events-auto hidden">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <span class="text-[10px] uppercase tracking-[0.22em] text-amber-400 font-semibold">Kamar-Taj Security Gate</span>
-                    <h2 class="font-mystic text-xl font-bold text-amber-100">Sorcerer Authentication</h2>
-                </div>
-                <button id="btn-open-env-modal" class="btn-secondary px-2.5 py-1 rounded-lg text-[11px] font-mono-code">
-                    .env Config
-                </button>
+            <div class="mb-4">
+                <span class="text-[10px] uppercase tracking-[0.22em] text-amber-400 font-semibold">Kamar-Taj Security Gate</span>
+                <h2 class="font-mystic text-xl font-bold text-amber-100">Sorcerer Authentication</h2>
             </div>
 
             <!-- Auth Mode Switcher -->
-            <div class="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-black/50 border border-amber-500/20 mb-4 text-xs">
-                <button data-auth-mode="otp" class="auth-mode-btn py-1.5 rounded-lg font-semibold bg-amber-500/25 text-amber-200 border border-amber-400/40">
-                    Email OTP
-                </button>
-                <button data-auth-mode="login" class="auth-mode-btn py-1.5 rounded-lg font-semibold text-amber-200/70">
-                    Password Login
+            <div class="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-black/50 border border-amber-500/20 mb-4 text-xs">
+                <button data-auth-mode="login" class="auth-mode-btn py-1.5 rounded-lg font-semibold bg-amber-500/25 text-amber-200 border border-amber-400/40">
+                    Sign In
                 </button>
                 <button data-auth-mode="signup" class="auth-mode-btn py-1.5 rounded-lg font-semibold text-amber-200/70">
                     Register
@@ -339,34 +315,18 @@
 
                 <div>
                     <label class="block text-xs text-amber-200/80 mb-1">Sanctum Email Address</label>
-                    <input id="auth-email" type="email" placeholder="stephen@sanctum.org" value="stephen@sanctum.org"
+                    <input id="auth-email" type="email" placeholder="stephen@sanctum.org"
                         class="w-full px-3.5 py-2 rounded-xl bg-black/60 border border-amber-500/35 text-sm text-amber-100 focus:outline-none focus:border-amber-400" />
                 </div>
 
-                <!-- Password Input (Shown in Login/Signup modes) -->
-                <div id="auth-password-group" class="hidden">
-                    <label class="block text-xs text-amber-200/80 mb-1">Astral Cipher (Min 8 chars, 1 number, 1 symbol)</label>
+                <div>
+                    <label class="block text-xs text-amber-200/80 mb-1">Astral Cipher (Min 8 chars, 1 number)</label>
                     <input id="auth-password" type="password" placeholder="••••••••••••"
                         class="w-full px-3.5 py-2 rounded-xl bg-black/60 border border-amber-500/35 text-sm text-amber-100 focus:outline-none focus:border-amber-400" />
                 </div>
 
-                <!-- 6-Digit OTP Verification Group -->
-                <div id="auth-otp-group" class="p-3 rounded-xl bg-amber-500/10 border border-amber-400/30 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold text-amber-200">6-Digit Email OTP Verification</span>
-                        <button type="button" id="btn-send-otp" class="text-[11px] font-mono-code px-2.5 py-1 rounded-lg bg-amber-500/30 border border-amber-400/50 text-amber-100 hover:bg-amber-500/50">
-                            Send OTP Code
-                        </button>
-                    </div>
-                    <input id="auth-otp-code" type="text" maxlength="6" placeholder="Enter 6-digit OTP (e.g. 482910)"
-                        class="w-full px-3.5 py-2 rounded-xl bg-black/70 border border-amber-500/40 text-center font-mono-code tracking-[0.35em] text-base text-amber-200 focus:outline-none focus:border-amber-400" />
-                    <p id="otp-helper-text" class="text-[11px] text-amber-200/70">
-                        Uses real <code class="text-amber-300">supabase.auth.signInWithOtp()</code> when keys are configured, or generates a local cryptographic verification code in Demo Mode.
-                    </p>
-                </div>
-
-                <button type="submit" id="btn-auth-submit" class="w-full btn-mystic py-2.5 rounded-xl font-mystic font-bold text-sm tracking-wider">
-                    Verify OTP & Enter Sanctum
+                <button type="submit" id="btn-auth-submit" class="w-full btn-mystic py-2.5 rounded-xl font-mystic font-bold text-sm tracking-wider mt-2">
+                    Sign In to Sanctum
                 </button>
             </form>
 
@@ -378,7 +338,7 @@
             </div>
         </section>
 
-        <!-- 2. HOME / MISSION BRIEFING SCREEN (Prompt 2) -->
+        <!-- 2. HOME / MISSION BRIEFING SCREEN -->
         <section id="view-home" class="w-full max-w-4xl glass-card rounded-3xl p-6 sm:p-8 pointer-events-auto">
             <div class="grid md:grid-cols-5 gap-6 items-center">
                 <div class="md:col-span-3 space-y-4">
@@ -393,7 +353,6 @@
                         Dormammu’s Crystalline Sentinels are breaching the Astral Sanctum. Use <strong class="text-amber-300">Three.js 3D Raycasting</strong> to scan enemy weak points, shoot around stone pillars that block line-of-sight rays, and shatter the Boss Core across 3 escalating waves.
                     </p>
 
-                    <!-- Difficulty & Loadout Selector -->
                     <div class="grid grid-cols-3 gap-2 pt-1">
                         <button data-diff="initiate" class="diff-btn btn-secondary p-2.5 rounded-xl text-left">
                             <div class="text-[10px] uppercase text-amber-400">Initiate</div>
@@ -419,7 +378,6 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Raycast Mechanics Breakdown Card -->
                 <div class="md:col-span-2 bg-black/45 border border-amber-500/25 rounded-2xl p-4 space-y-3 text-xs">
                     <div class="font-mystic font-bold text-amber-300 tracking-wider uppercase text-xs border-b border-amber-500/20 pb-2">
                         3D Raycast Architecture
@@ -451,7 +409,7 @@
             </div>
         </section>
 
-        <!-- 3. CONNECTED ANALYTICS DASHBOARD & LEADERBOARD (Prompt 6) -->
+        <!-- 3. CONNECTED ANALYTICS DASHBOARD & LEADERBOARD -->
         <section id="view-dashboard" class="w-full max-w-6xl glass-card rounded-3xl p-5 sm:p-7 pointer-events-auto hidden max-h-[84vh] overflow-y-auto custom-scrollbar">
             <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                 <div>
@@ -468,7 +426,6 @@
                 </div>
             </div>
 
-            <!-- 6 KPI Stat Cards -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
                 <div class="bg-black/50 border border-amber-500/25 rounded-2xl p-3.5">
                     <div class="text-[10px] uppercase text-amber-300/70">High Score</div>
@@ -496,9 +453,7 @@
                 </div>
             </div>
 
-            <!-- Match History & Leaderboard + Player Profile Settings -->
             <div class="grid lg:grid-cols-3 gap-5">
-                <!-- Leaderboard & Match Log Table -->
                 <div class="lg:col-span-2 bg-black/45 border border-amber-500/25 rounded-2xl p-4">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-mystic font-bold text-sm text-amber-200">Validated Sanctum Match Records</h3>
@@ -524,7 +479,6 @@
                     </div>
                 </div>
 
-                <!-- Sorcerer Profile & Arena Settings -->
                 <div class="bg-black/45 border border-amber-500/25 rounded-2xl p-4 space-y-3.5 text-xs">
                     <h3 class="font-mystic font-bold text-sm text-amber-200 border-b border-amber-500/20 pb-2">
                         Sorcerer Profile & Settings
@@ -559,15 +513,15 @@
             </div>
         </section>
 
-        <!-- 4. SECURITY & AUTOMATED RAYCAST DIAGNOSTIC SUITE (Prompts 7 & 8) -->
+        <!-- 4. SECURITY & AUTOMATED RAYCAST DIAGNOSTIC SUITE -->
         <section id="view-security" class="w-full max-w-5xl glass-card rounded-3xl p-6 pointer-events-auto hidden max-h-[84vh] overflow-y-auto custom-scrollbar">
             <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div>
-                    <span class="text-[10px] uppercase tracking-[0.2em] text-emerald-400 font-semibold">Prompts 7 & 8 Verification</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-emerald-400 font-semibold">Security Verification</span>
                     <h2 class="font-mystic text-xl font-bold text-amber-100">Security & Raycast Diagnostic Suite</h2>
                 </div>
                 <button id="btn-run-diagnostics" class="btn-mystic px-4 py-2 rounded-xl text-xs font-bold">
-                    ▶ Run All 8 Automated Diagnostics
+                    ▶ Run All Automated Diagnostics
                 </button>
             </div>
 
@@ -575,23 +529,23 @@
                 <div class="bg-black/50 border border-amber-500/25 rounded-2xl p-4 space-y-2.5">
                     <h3 class="font-mystic font-bold text-amber-300">Automated Test Results</h3>
                     <div id="diagnostic-results-list" class="space-y-2 font-mono-code text-[11px]">
-                        <div class="text-amber-200/60">Click "Run All 8 Automated Diagnostics" to verify Raycasting, Obstacle Occlusion, XSS Sanitization, and Anti-Cheat Plausibility checks.</div>
+                        <div class="text-amber-200/60">Click "Run All Automated Diagnostics" to verify Raycasting, Obstacle Occlusion, XSS Sanitization, and Anti-Cheat Plausibility checks.</div>
                     </div>
                 </div>
 
                 <div class="bg-black/50 border border-amber-500/25 rounded-2xl p-4 space-y-2.5">
-                    <h3 class="font-mystic font-bold text-amber-300">Security Controls Implemented (Prompt 8)</h3>
+                    <h3 class="font-mystic font-bold text-amber-300">Security Controls Implemented</h3>
                     <ul class="space-y-2 text-amber-100/80 list-disc pl-4">
-                        <li><strong>Zero Hardcoded Secrets:</strong> Supabase URL & Anon Key are loaded strictly from runtime environment config; <code class="text-amber-300">.env</code> is excluded via <code class="text-amber-300">.gitignore</code>.</li>
-                        <li><strong>Supabase OTP + Argon2/bcrypt:</strong> Authentication delegates password hashing and 6-digit OTP token verification to Supabase Auth.</li>
+                        <li><strong>Zero Hardcoded Secrets:</strong> Supabase URL & Anon Key are loaded strictly from runtime environment config.</li>
+                        <li><strong>Password & Email Auth:</strong> Authentication delegates password hashing and session management to Supabase Auth.</li>
                         <li><strong>XSS & Input Validation:</strong> Callsigns and inputs are validated with strict regex and rendered exclusively via <code class="text-amber-300">textContent</code>.</li>
-                        <li><strong>Anti-Cheat Score Plausibility & Rate Limiting:</strong> Score submissions are rate-limited (max 1 per 3s) and rejected if <code class="text-amber-300">score &gt; maxTheoreticalScore(shotsHit, wave)</code>.</li>
+                        <li><strong>Anti-Cheat Score Plausibility & Rate Limiting:</strong> Score submissions are rate-limited and rejected if <code class="text-amber-300">score &gt; maxTheoreticalScore</code>.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 5. PAUSE / VICTORY / GAME-OVER MODAL (Prompts 2 & 5) -->
+        <!-- 5. PAUSE / VICTORY / GAME-OVER MODAL -->
         <div id="modal-game-state" class="w-full max-w-md glass-card rounded-3xl p-6 text-center pointer-events-auto hidden">
             <span id="modal-badge" class="text-[10px] font-mono-code uppercase tracking-widest px-3 py-1 rounded-full bg-amber-500/20 text-amber-300">
                 SANCTUM TEMPORAL PAUSE
@@ -629,34 +583,6 @@
             </div>
         </div>
 
-        <!-- 6. SUPABASE .ENV RUNTIME CONFIGURATION MODAL (Prompt 8) -->
-        <div id="modal-env-config" class="w-full max-w-lg glass-card rounded-3xl p-6 pointer-events-auto hidden">
-            <div class="flex items-center justify-between mb-3">
-                <h3 class="font-mystic font-bold text-lg text-amber-100">Supabase Environment (.env) Configuration</h3>
-                <button id="btn-close-env-modal" class="text-amber-300 text-xs hover:underline">Close ✕</button>
-            </div>
-            <p class="text-xs text-amber-200/75 mb-4">
-                In accordance with <strong>Prompt 8 (Security Requirements)</strong>, no API keys are hardcoded in source code. Paste your public <code class="text-amber-300">VITE_SUPABASE_URL</code> and <code class="text-amber-300">VITE_SUPABASE_ANON_KEY</code> below to enable live Supabase Email OTP & PostgreSQL Leaderboard sync.
-            </p>
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="block text-amber-200/80 mb-1">VITE_SUPABASE_URL</label>
-                    <input id="env-supabase-url" type="url" placeholder="https://your-project.supabase.co"
-                        class="w-full px-3 py-2 rounded-xl bg-black/60 border border-amber-500/35 text-amber-100 font-mono-code" />
-                </div>
-                <div>
-                    <label class="block text-amber-200/80 mb-1">VITE_SUPABASE_ANON_KEY (Public RLS Key Only — Never Service Role)</label>
-                    <input id="env-supabase-key" type="password" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI..."
-                        class="w-full px-3 py-2 rounded-xl bg-black/60 border border-amber-500/35 text-amber-100 font-mono-code" />
-                </div>
-                <div class="flex justify-end gap-2 pt-2">
-                    <button id="btn-connect-supabase" class="btn-mystic px-4 py-2 rounded-xl font-semibold">
-                        Connect Supabase Client
-                    </button>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <script type="module">
@@ -689,45 +615,36 @@
                 return this.enabled;
             },
 
-            // 1. Eldritch Spell Cast / Raycast Laser Shoot
             playSpellCast(isCrit = false) {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
-
                 osc.type = isCrit ? 'triangle' : 'sawtooth';
                 osc.frequency.setValueAtTime(isCrit ? 880 : 520, now);
                 osc.frequency.exponentialRampToValueAtTime(isCrit ? 190 : 110, now + 0.19);
-
                 gain.gain.setValueAtTime(0.22 * this.volume, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start(now);
                 osc.stop(now + 0.2);
             },
 
-            // 2. 2x Critical Core Hit Chime (Harmonic Crystalline Bell)
             playCritHit() {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 [1046.5, 1318.5, 1567.98].forEach((freq, i) => {
                     const osc = this.ctx.createOscillator();
                     const gain = this.ctx.createGain();
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(freq, now + i * 0.035);
-
                     gain.gain.setValueAtTime(0.18 * this.volume, now + i * 0.035);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.035 + 0.32);
-
                     osc.connect(gain);
                     gain.connect(this.ctx.destination);
                     osc.start(now + i * 0.035);
@@ -735,57 +652,45 @@
                 });
             },
 
-            // 3. Stone Pillar Blocked / Shield Deflect Thud
             playBlockedHit() {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
                 osc.type = 'square';
                 osc.frequency.setValueAtTime(160, now);
                 osc.frequency.exponentialRampToValueAtTime(55, now + 0.14);
-
                 gain.gain.setValueAtTime(0.2 * this.volume, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start(now);
                 osc.stop(now + 0.15);
             },
 
-            // 4. Sentinel Shatter / Explosion
             playEnemyShatter(isBoss = false) {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const duration = isBoss ? 0.65 : 0.32;
-
-                // White noise burst filtered through lowpass
                 const bufferSize = this.ctx.sampleRate * duration;
                 const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
                 const data = buffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
                     data[i] = Math.random() * 2 - 1;
                 }
-
                 const noise = this.ctx.createBufferSource();
                 noise.buffer = buffer;
-
                 const filter = this.ctx.createBiquadFilter();
                 filter.type = 'bandpass';
                 filter.frequency.setValueAtTime(isBoss ? 420 : 780, now);
                 filter.frequency.exponentialRampToValueAtTime(120, now + duration);
-
                 const gain = this.ctx.createGain();
                 gain.gain.setValueAtTime(0.32 * this.volume, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
-
                 noise.connect(filter);
                 filter.connect(gain);
                 gain.connect(this.ctx.destination);
@@ -793,12 +698,10 @@
                 noise.stop(now + duration);
             },
 
-            // 5. Eye of Agamotto Time Surge / Relic Powerup
             playTimeWarp() {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -806,44 +709,36 @@
                 osc.frequency.setValueAtTime(240, now);
                 osc.frequency.exponentialRampToValueAtTime(720, now + 0.25);
                 osc.frequency.exponentialRampToValueAtTime(180, now + 0.65);
-
                 gain.gain.setValueAtTime(0.24 * this.volume, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.68);
-
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start(now);
                 osc.stop(now + 0.68);
             },
 
-            // 6. Mana Recharge Chime
             playReload() {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
                 osc.type = 'triangle';
                 osc.frequency.setValueAtTime(330, now);
                 osc.frequency.exponentialRampToValueAtTime(660, now + 0.14);
-
                 gain.gain.setValueAtTime(0.18 * this.volume, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start(now);
                 osc.stop(now + 0.15);
             },
 
-            // 7. Wave Fanfare / Victory / Breach Alert
             playWaveFanfare(isVictory = true) {
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const notes = isVictory ? [440, 554.37, 659.25, 880] : [330, 293.66, 246.94, 164.81];
                 notes.forEach((f, idx) => {
@@ -851,10 +746,8 @@
                     const gain = this.ctx.createGain();
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(f, now + idx * 0.09);
-
                     gain.gain.setValueAtTime(0.2 * this.volume, now + idx * 0.09);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.09 + 0.35);
-
                     osc.connect(gain);
                     gain.connect(this.ctx.destination);
                     osc.start(now + idx * 0.09);
@@ -866,7 +759,6 @@
                 if (!this.enabled) return;
                 this.init();
                 if (!this.ctx) return;
-
                 const now = this.ctx.currentTime;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -882,13 +774,12 @@
         };
 
         // ============================================================================
-        // PROMPT 8: SECURITY UTILITIES, INPUT VALIDATION, XSS SANITIZATION & ANTI-CHEAT
+        // SECURITY UTILITIES, INPUT VALIDATION, XSS SANITIZATION & ANTI-CHEAT
         // ============================================================================
         const SecurityGuard = {
             lastScoreSubmitTime: 0,
             rateLimitCooldownMs: 2500,
 
-            // Strict alphanumeric + underscore callsign validation (prevents SQLi/XSS payloads)
             validateCallsign(raw) {
                 const cleaned = String(raw || '').trim().replace(/[^a-zA-Z0-9_-]/g, '');
                 if (cleaned.length < 3 || cleaned.length > 20) {
@@ -907,7 +798,6 @@
                 return s.length >= 8 && /[0-9]/.test(s);
             },
 
-            // Anti-Cheat Plausibility Validator: Prevents tampered console scores
             validateScoreSubmission({ score, shotsFired, shotsHit, crits, wave }) {
                 const now = performance.now();
                 if (now - this.lastScoreSubmitTime < this.rateLimitCooldownMs) {
@@ -919,7 +809,6 @@
                 if (shotsHit > shotsFired) {
                     return { valid: false, reason: 'IMPOSSIBLE_ACCURACY' };
                 }
-                // Maximum possible score check based on hits, critical multiplier, and wave clear bonuses
                 const maxTheoretical = (shotsHit * 650) + (wave * 2500) + 1500;
                 if (score > maxTheoretical) {
                     return { valid: false, reason: 'SCORE_EXCEEDS_THEORETICAL_MAX' };
@@ -930,10 +819,9 @@
         };
 
         // ============================================================================
-        // SUPABASE CLIENT & AUTHENTICATION STATE (Prompt 2 & Prompt 8)
+        // SUPABASE CLIENT & AUTHENTICATION STATE
         // ============================================================================
         let supabaseClient = null;
-        let generatedDemoOtp = null;
 
         async function fetchSupabaseLeaderboard() {
             if (!supabaseClient) return;
@@ -976,27 +864,22 @@
             return false;
         }
 
-        // Auto-detect Vite / Vercel .env variables (VITE_SUPABASE_URL & VITE_SUPABASE_ANON_KEY) if bundled with Vite
         try {
             const viteEnv = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env : null;
             if (viteEnv && viteEnv.VITE_SUPABASE_URL && viteEnv.VITE_SUPABASE_ANON_KEY) {
                 initSupabaseClient(viteEnv.VITE_SUPABASE_URL, viteEnv.VITE_SUPABASE_ANON_KEY);
             }
-        } catch (_) {
-            // Running directly in browser without Vite bundler; user can use .env Config modal or Demo Mode
-        }
+        } catch (_) {}
 
         // ============================================================================
-        // PROMPT 5 & 6: CENTRALIZED GAME & TELEMETRY STATE
+        // CENTRALIZED GAME & TELEMETRY STATE
         // ============================================================================
         const GameState = {
-            currentView: 'home', // 'auth' | 'home' | 'game' | 'dashboard' | 'security'
+            currentView: 'home',
             isPlaying: false,
             isPaused: false,
-            difficulty: 'master', // 'initiate' (1.0) | 'master' (1.35) | 'supreme' (1.75)
+            difficulty: 'master',
             diffMultiplier: 1.35,
-
-            // Live Match State
             wave: 1,
             maxWaves: 3,
             score: 0,
@@ -1008,14 +891,10 @@
             enemiesRemainingInWave: 0,
             enemiesSpawnedInWave: 0,
             waveTargetCount: 6,
-
-            // Raycasting Telemetry
             shotsFired: 0,
             shotsHit: 0,
             criticalHits: 0,
             blockedByPillarHits: 0,
-
-            // Persistent Profile & Dashboard Metrics
             playerCallsign: 'SorcererSupreme',
             playerEmail: 'stephen@sanctum.org',
             isAuthenticated: true,
@@ -1032,7 +911,7 @@
         };
 
         // ============================================================================
-        // PROMPT 3: THREE.JS 3D SCENE, ARENA, OBSTACLE PILLARS & SENTINEL 3D MODELS
+        // THREE.JS 3D SCENE, ARENA, OBSTACLE PILLARS & SENTINEL 3D MODELS
         // ============================================================================
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
@@ -1052,19 +931,15 @@
         renderer.toneMappingExposure = 1.2;
         container.appendChild(renderer.domElement);
 
-        // Lighting
         const ambientLight = new THREE.AmbientLight(0xffddb0, 0.75);
         scene.add(ambientLight);
-
         const centerSanctumLight = new THREE.PointLight(0xff9922, 28, 45, 1.3);
         centerSanctumLight.position.set(0, 6, 0);
         scene.add(centerSanctumLight);
-
         const dirLight = new THREE.DirectionalLight(0xc084fc, 1.8);
         dirLight.position.set(15, 28, 12);
         scene.add(dirLight);
 
-        // Procedural Seal of the Vishanti Arena Floor Texture
         function createArenaFloorTexture() {
             const c = document.createElement('canvas');
             c.width = 512;
@@ -1072,7 +947,6 @@
             const ctx = c.getContext('2d');
             ctx.fillStyle = '#0c0814';
             ctx.fillRect(0, 0, 512, 512);
-
             ctx.strokeStyle = 'rgba(255, 175, 55, 0.38)';
             ctx.lineWidth = 4;
             [235, 185, 120, 55].forEach((r) => {
@@ -1080,8 +954,6 @@
                 ctx.arc(256, 256, r, 0, Math.PI * 2);
                 ctx.stroke();
             });
-
-            // 8-pointed sacred geometry star
             for (let i = 0; i < 4; i++) {
                 ctx.save();
                 ctx.translate(256, 256);
@@ -1089,95 +961,57 @@
                 ctx.strokeRect(-130, -130, 260, 260);
                 ctx.restore();
             }
-
             const tex = new THREE.CanvasTexture(c);
             tex.colorSpace = THREE.SRGBColorSpace;
             return tex;
         }
 
-        // Astral Sanctum Floor Platform
         const arenaFloor = new THREE.Mesh(
             new THREE.CylinderGeometry(24, 26, 1.2, 64),
-            new THREE.MeshStandardMaterial({
-                map: createArenaFloorTexture(),
-                roughness: 0.28,
-                metalness: 0.45
-            })
+            new THREE.MeshStandardMaterial({ map: createArenaFloorTexture(), roughness: 0.28, metalness: 0.45 })
         );
         arenaFloor.position.y = -0.6;
         scene.add(arenaFloor);
 
-        // Glowing Central Sanctum Relic Core (What the Sentinels are trying to attack!)
         const sanctumCoreGroup = new THREE.Group();
         sanctumCoreGroup.position.set(0, 2.2, 0);
         scene.add(sanctumCoreGroup);
-
         const sanctumNexusOcta = new THREE.Mesh(
             new THREE.OctahedronGeometry(1.15, 0),
-            new THREE.MeshStandardMaterial({
-                color: 0xffbe44,
-                emissive: 0xff6a00,
-                emissiveIntensity: 1.8,
-                metalness: 0.85,
-                roughness: 0.15
-            })
+            new THREE.MeshStandardMaterial({ color: 0xffbe44, emissive: 0xff6a00, emissiveIntensity: 1.8, metalness: 0.85, roughness: 0.15 })
         );
         sanctumCoreGroup.add(sanctumNexusOcta);
-
         const sanctumNexusRing = new THREE.Mesh(
             new THREE.TorusGeometry(1.85, 0.06, 16, 64),
             new THREE.MeshBasicMaterial({ color: 0x00ffaa })
         );
         sanctumCoreGroup.add(sanctumNexusRing);
 
-        // ============================================================================
-        // RAYCAST FILTERING ARRAYS (Prompt 4: Proper Raycast Filtering & Obstacles)
-        // ============================================================================
-        const obstacleMeshes = []; // Stone Pillars that block player raycasts if in front of an enemy
-        const enemyHitboxes = [];  // Sub-meshes of active enemies & interactive relics
-        const activeEnemies = [];  // Enemy controller objects
-        const activeRelics = [];   // Floating Time / Healing Orbs
-        const activeBeams = [];    // 3D Raycast Spell Tracer Beams
-        const activeSparks = [];   // 3D Hit Particle Bursts
+        const obstacleMeshes = [];
+        const enemyHitboxes = [];
+        const activeEnemies = [];
+        const activeRelics = [];
+        const activeBeams = [];
+        const activeSparks = [];
 
-        // Build 4 Sanctum Line-of-Sight Stone Pillars around the Arena
-        const pillarMat = new THREE.MeshStandardMaterial({
-            color: 0x1e162b,
-            roughness: 0.55,
-            metalness: 0.35
-        });
-        const pillarTrimMat = new THREE.MeshStandardMaterial({
-            color: 0xd99b26,
-            metalness: 0.85,
-            roughness: 0.25
-        });
-
+        const pillarMat = new THREE.MeshStandardMaterial({ color: 0x1e162b, roughness: 0.55, metalness: 0.35 });
+        const pillarTrimMat = new THREE.MeshStandardMaterial({ color: 0xd99b26, metalness: 0.85, roughness: 0.25 });
         for (let i = 0; i < 4; i++) {
             const angle = (i * Math.PI) / 2 + Math.PI / 4;
             const radius = 10.5;
             const px = Math.cos(angle) * radius;
             const pz = Math.sin(angle) * radius;
-
-            const pillarMesh = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.95, 1.1, 8.5, 16),
-                pillarMat
-            );
+            const pillarMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 1.1, 8.5, 16), pillarMat);
             pillarMesh.position.set(px, 4.25, pz);
-            pillarMesh.userData = {
-                isObstacle: true,
-                label: 'SANCTUM STONE PILLAR (BLOCKS RAY)'
-            };
+            pillarMesh.userData = { isObstacle: true, label: 'SANCTUM STONE PILLAR (BLOCKS RAY)' };
             scene.add(pillarMesh);
             obstacleMeshes.push(pillarMesh);
-
-            // Golden Rune Rings on Pillar
             const ring = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.07, 12, 32), pillarTrimMat);
             ring.rotation.x = Math.PI / 2;
             ring.position.set(px, 3.2, pz);
             scene.add(ring);
         }
 
-        // Build 4 Outer Dark Dimension Spawn Rifts
         const riftPortals = [];
         for (let i = 0; i < 4; i++) {
             const angle = (i * Math.PI) / 2;
@@ -1185,26 +1019,13 @@
             const riftGroup = new THREE.Group();
             riftGroup.position.set(Math.cos(angle) * r, 3.8, Math.sin(angle) * r);
             riftGroup.lookAt(0, 3.8, 0);
-
-            const outerRing = new THREE.Mesh(
-                new THREE.TorusGeometry(2.4, 0.1, 16, 48),
-                new THREE.MeshBasicMaterial({ color: 0xa855f7 })
-            );
-            const vortexDisc = new THREE.Mesh(
-                new THREE.CircleGeometry(2.35, 32),
-                new THREE.MeshBasicMaterial({
-                    color: 0x2e1065,
-                    transparent: true,
-                    opacity: 0.65,
-                    side: THREE.DoubleSide
-                })
-            );
+            const outerRing = new THREE.Mesh(new THREE.TorusGeometry(2.4, 0.1, 16, 48), new THREE.MeshBasicMaterial({ color: 0xa855f7 }));
+            const vortexDisc = new THREE.Mesh(new THREE.CircleGeometry(2.35, 32), new THREE.MeshBasicMaterial({ color: 0x2e1065, transparent: true, opacity: 0.65, side: THREE.DoubleSide }));
             riftGroup.add(outerRing, vortexDisc);
             scene.add(riftGroup);
             riftPortals.push({ group: riftGroup, outerRing, angle });
         }
 
-        // Ambient Starfield / Astral Dust
         const starGeo = new THREE.BufferGeometry();
         const starPositions = new Float32Array(1200 * 3);
         for (let i = 0; i < 1200; i++) {
@@ -1213,145 +1034,71 @@
             starPositions[i * 3 + 2] = (Math.random() - 0.5) * 140;
         }
         starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        const starField = new THREE.Points(
-            starGeo,
-            new THREE.PointsMaterial({ color: 0xffbe44, size: 0.18, transparent: true, opacity: 0.7 })
-        );
+        const starField = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffbe44, size: 0.18, transparent: true, opacity: 0.7 }));
         scene.add(starField);
 
-        // ============================================================================
-        // SPAWNING MULTI-PART 3D SENTINEL MODELS & INTERACTIVE RELICS (Prompts 3, 4, 5)
-        // ============================================================================
         function spawnSentinel(isBoss = false) {
             const rift = riftPortals[Math.floor(Math.random() * riftPortals.length)];
             const group = new THREE.Group();
-
             const spawnAngle = rift.angle + (Math.random() - 0.5) * 0.35;
             const startRadius = 20.5;
-            group.position.set(
-                Math.cos(spawnAngle) * startRadius,
-                isBoss ? 4.4 : 2.6 + Math.random() * 2.2,
-                Math.sin(spawnAngle) * startRadius
-            );
-
+            group.position.set(Math.cos(spawnAngle) * startRadius, isBoss ? 4.4 : 2.6 + Math.random() * 2.2, Math.sin(spawnAngle) * startRadius);
             const maxHp = isBoss ? 240 : (50 + GameState.wave * 25);
             const scale = isBoss ? 1.75 : 1.0;
             group.scale.setScalar(scale);
 
-            // 1. Sub-Mesh A: Glowing Cyan Core (2X CRITICAL WEAK POINT)
-            const coreMat = new THREE.MeshStandardMaterial({
-                color: 0x00ffcc,
-                emissive: 0x00ccaa,
-                emissiveIntensity: 2.2,
-                roughness: 0.1
-            });
+            const coreMat = new THREE.MeshStandardMaterial({ color: 0x00ffcc, emissive: 0x00ccaa, emissiveIntensity: 2.2, roughness: 0.1 });
             const coreMesh = new THREE.Mesh(new THREE.OctahedronGeometry(0.52, 1), coreMat);
-            coreMesh.userData = {
-                hitZone: 'CRITICAL_CORE',
-                damageMultiplier: 2.0,
-                label: isBoss ? 'DORMAMMU BOSS CORE (2X CRIT)' : 'SENTINEL CORE (2X CRIT)'
-            };
+            coreMesh.userData = { hitZone: 'CRITICAL_CORE', damageMultiplier: 2.0, label: isBoss ? 'DORMAMMU BOSS CORE (2X CRIT)' : 'SENTINEL CORE (2X CRIT)' };
             group.add(coreMesh);
             enemyHitboxes.push(coreMesh);
 
-            // 2. Sub-Mesh B: Outer Crystalline Armor Hull (1X NORMAL HIT)
-            const armorMat = new THREE.MeshStandardMaterial({
-                color: isBoss ? 0xff1166 : 0x9333ea,
-                emissive: isBoss ? 0x880033 : 0x3b0764,
-                emissiveIntensity: 1.1,
-                metalness: 0.75,
-                roughness: 0.25,
-                wireframe: true
-            });
+            const armorMat = new THREE.MeshStandardMaterial({ color: isBoss ? 0xff1166 : 0x9333ea, emissive: isBoss ? 0x880033 : 0x3b0764, emissiveIntensity: 1.1, metalness: 0.75, roughness: 0.25, wireframe: true });
             const armorMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(0.98, 0), armorMat);
-            armorMesh.userData = {
-                hitZone: 'ARMOR_HULL',
-                damageMultiplier: 1.0,
-                label: isBoss ? 'BOSS ARMOR SHELL (1X HIT)' : 'SENTINEL ARMOR (1X HIT)'
-            };
+            armorMesh.userData = { hitZone: 'ARMOR_HULL', damageMultiplier: 1.0, label: isBoss ? 'BOSS ARMOR SHELL (1X HIT)' : 'SENTINEL ARMOR (1X HIT)' };
             group.add(armorMesh);
             enemyHitboxes.push(armorMesh);
 
-            // 3. Sub-Mesh C: Rotating Deflector Shield Segment (Wave 2+ & Boss — Deflects Raycast!)
             let shieldMesh = null;
             if (GameState.wave >= 2 || isBoss) {
-                shieldMesh = new THREE.Mesh(
-                    new THREE.TorusGeometry(1.32, 0.14, 12, 32, Math.PI * 1.15),
-                    new THREE.MeshStandardMaterial({
-                        color: 0xffaa00,
-                        emissive: 0xff5500,
-                        emissiveIntensity: 1.5
-                    })
-                );
-                shieldMesh.userData = {
-                    hitZone: 'DEFLECTOR_SHIELD',
-                    damageMultiplier: 0.2,
-                    label: 'ORBITAL SHIELD (DEFLECTS 80%)'
-                };
+                shieldMesh = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.14, 12, 32, Math.PI * 1.15), new THREE.MeshStandardMaterial({ color: 0xffaa00, emissive: 0xff5500, emissiveIntensity: 1.5 }));
+                shieldMesh.userData = { hitZone: 'DEFLECTOR_SHIELD', damageMultiplier: 0.2, label: 'ORBITAL SHIELD (DEFLECTS 80%)' };
                 group.add(shieldMesh);
                 enemyHitboxes.push(shieldMesh);
             }
 
-            // 4. 3D Overhead Health Bar Ring
-            const hpRing = new THREE.Mesh(
-                new THREE.RingGeometry(0.75, 0.88, 32),
-                new THREE.MeshBasicMaterial({ color: 0x10b981, side: THREE.DoubleSide })
-            );
+            const hpRing = new THREE.Mesh(new THREE.RingGeometry(0.75, 0.88, 32), new THREE.MeshBasicMaterial({ color: 0x10b981, side: THREE.DoubleSide }));
             hpRing.position.y = 1.45;
             group.add(hpRing);
 
             const enemyObj = {
                 id: crypto.randomUUID ? crypto.randomUUID() : String(Math.random()),
-                group,
-                coreMesh,
-                armorMesh,
-                shieldMesh,
-                hpRing,
-                isBoss,
-                hp: maxHp,
-                maxHp,
+                group, coreMesh, armorMesh, shieldMesh, hpRing, isBoss, hp: maxHp, maxHp,
                 speed: (isBoss ? 1.15 : (1.75 + GameState.wave * 0.45)) * (GameState.difficulty === 'supreme' ? 1.25 : 1.0),
-                strafePhase: Math.random() * Math.PI * 2,
-                hitFlashTimer: 0
+                strafePhase: Math.random() * Math.PI * 2, hitFlashTimer: 0
             };
 
             coreMesh.userData.enemyRef = enemyObj;
             armorMesh.userData.enemyRef = enemyObj;
             if (shieldMesh) shieldMesh.userData.enemyRef = enemyObj;
-
             scene.add(group);
             activeEnemies.push(enemyObj);
         }
 
-        // Spawn Interactive 3D Powerup Relics (Shoot with Raycaster to activate!)
         function spawnInteractiveRelic(type = 'TIME_ORB') {
             const angle = Math.random() * Math.PI * 2;
             const r = 8 + Math.random() * 5;
             const isTime = type === 'TIME_ORB';
-
-            const mesh = new THREE.Mesh(
-                new THREE.TorusKnotGeometry(0.48, 0.14, 48, 12),
-                new THREE.MeshStandardMaterial({
-                    color: isTime ? 0x10b981 : 0xffbe44,
-                    emissive: isTime ? 0x059669 : 0xd97706,
-                    emissiveIntensity: 2.0
-                })
-            );
+            const mesh = new THREE.Mesh(new THREE.TorusKnotGeometry(0.48, 0.14, 48, 12), new THREE.MeshStandardMaterial({ color: isTime ? 0x10b981 : 0xffbe44, emissive: isTime ? 0x059669 : 0xd97706, emissiveIntensity: 2.0 }));
             mesh.position.set(Math.cos(angle) * r, 3.6, Math.sin(angle) * r);
-            mesh.userData = {
-                hitZone: isTime ? 'RELIC_TIME' : 'RELIC_HEAL',
-                label: isTime ? 'EYE OF AGAMOTTO ORB (SHOOT FOR SLOW-MO)' : 'VISHANTI RUNE (SHOOT FOR +25% SHIELD)',
-                isRelic: true,
-                relicType: type
-            };
-
+            mesh.userData = { hitZone: isTime ? 'RELIC_TIME' : 'RELIC_HEAL', label: isTime ? 'EYE OF AGAMOTTO ORB (SHOOT FOR SLOW-MO)' : 'VISHANTI RUNE (SHOOT FOR +25% SHIELD)', isRelic: true, relicType: type };
             scene.add(mesh);
             enemyHitboxes.push(mesh);
             activeRelics.push({ mesh, type, life: 14.0 });
         }
 
         // ============================================================================
-        // PROMPT 4: THREE.JS RAYCASTING ENGINE (HOVER SCAN + SHOOT + OBSTACLE CHECK)
+        // THREE.JS RAYCASTING ENGINE (HOVER SCAN + SHOOT + OBSTACLE CHECK)
         // ============================================================================
         const raycaster = new THREE.Raycaster();
         const pointerNDC = new THREE.Vector2(0, 0);
@@ -1361,18 +1108,11 @@
         function spawn3DSpellBeam(startPoint, endPoint, colorHex = 0xffaa22) {
             const distance = startPoint.distanceTo(endPoint);
             const midPoint = startPoint.clone().lerp(endPoint, 0.5);
-
             const beamGeo = new THREE.CylinderGeometry(0.05, 0.12, distance, 8);
             beamGeo.rotateX(Math.PI / 2);
-            const beamMat = new THREE.MeshBasicMaterial({
-                color: colorHex,
-                transparent: true,
-                opacity: 0.95
-            });
-            const beamMesh = new THREE.Mesh(beamGeo, beamMat);
+            const beamMesh = new THREE.Mesh(beamGeo, new THREE.MeshBasicMaterial({ color: colorHex, transparent: true, opacity: 0.95 }));
             beamMesh.position.copy(midPoint);
             beamMesh.lookAt(endPoint);
-
             scene.add(beamMesh);
             activeBeams.push({ mesh: beamMesh, life: 0.18, maxLife: 0.18 });
         }
@@ -1385,20 +1125,10 @@
                 pos[i * 3] = point.x;
                 pos[i * 3 + 1] = point.y;
                 pos[i * 3 + 2] = point.z;
-                vel.push(new THREE.Vector3(
-                    (Math.random() - 0.5) * 9,
-                    (Math.random() - 0.5) * 9,
-                    (Math.random() - 0.5) * 9
-                ));
+                vel.push(new THREE.Vector3((Math.random() - 0.5) * 9, (Math.random() - 0.5) * 9, (Math.random() - 0.5) * 9));
             }
             geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-            const mat = new THREE.PointsMaterial({
-                color: colorHex,
-                size: 0.24,
-                transparent: true,
-                opacity: 1.0
-            });
-            const points = new THREE.Points(geo, mat);
+            const points = new THREE.Points(geo, new THREE.PointsMaterial({ color: colorHex, size: 0.24, transparent: true, opacity: 1.0 }));
             scene.add(points);
             activeSparks.push({ points, vel, life: 0.42 });
         }
@@ -1414,23 +1144,17 @@
             setTimeout(() => el.remove(), 850);
         }
 
-        // Perform Real-Time Hover Raycast to highlight targets & detect obstacle occlusion
         function updateHoverRaycast() {
             if (!GameState.isPlaying || GameState.isPaused) return;
-
             raycaster.setFromCamera(pointerNDC, camera);
-
             const obstacleHits = raycaster.intersectObjects(obstacleMeshes, false);
             const targetHits = raycaster.intersectObjects(enemyHitboxes, false);
-
             const closestObstacleDist = obstacleHits.length > 0 ? obstacleHits[0].distance : Infinity;
             const closestTarget = targetHits.length > 0 ? targetHits[0] : null;
 
             reticleEl.classList.remove('target-enemy', 'target-crit', 'target-blocked');
-
             if (closestTarget) {
                 if (closestObstacleDist < closestTarget.distance) {
-                    // Pillar is closer than the enemy! Ray is blocked by cover.
                     reticleEl.classList.add('target-blocked');
                     scannerReadoutEl.textContent = 'LINE OF SIGHT BLOCKED BY PILLAR';
                     scannerReadoutEl.className = 'text-xs font-mono-code text-slate-400 truncate mt-0.5';
@@ -1455,36 +1179,25 @@
             }
         }
 
-        // Execute Shooting Raycast when player clicks in the 3D Arena
         function fireEldritchRaycast(clientX, clientY) {
             if (!GameState.isPlaying || GameState.isPaused) return;
-
             if (GameState.ammo <= 0) {
                 SoundEngine.playBlockedHit();
                 spawnFloatingCombatText(clientX, clientY, 'OUT OF MANA! PRESS [R]', 'text-rose-400');
                 return;
             }
-
             GameState.ammo--;
             GameState.shotsFired++;
-
-            // Compute Normalized Device Coordinates (-1 to +1)
             pointerNDC.x = (clientX / window.innerWidth) * 2 - 1;
             pointerNDC.y = -(clientY / window.innerHeight) * 2 + 1;
-
             raycaster.setFromCamera(pointerNDC, camera);
 
-            // Origin of spell beam slightly below camera (caster hand position)
             const spellOrigin = camera.position.clone().add(new THREE.Vector3(0, -0.55, 0));
-
-            // 1. Check Obstacles vs Enemy Hitboxes
             const obstacleHits = raycaster.intersectObjects(obstacleMeshes, false);
             const targetHits = raycaster.intersectObjects(enemyHitboxes, false);
-
             const closestObstacle = obstacleHits.length > 0 ? obstacleHits[0] : null;
             const closestTarget = targetHits.length > 0 ? targetHits[0] : null;
 
-            // Case A: Ray hits a Sanctum Stone Pillar before reaching the enemy
             if (closestObstacle && (!closestTarget || closestObstacle.distance < closestTarget.distance)) {
                 GameState.blockedByPillarHits++;
                 GameState.combo = 1.0;
@@ -1496,19 +1209,16 @@
                 return;
             }
 
-            // Case B: Ray hits an Enemy Sub-Mesh or Interactive Relic!
             if (closestTarget) {
                 GameState.shotsHit++;
                 const hitObj = closestTarget.object;
                 const hitPoint = closestTarget.point;
 
-                // Check if it's an interactive floating Relic
                 if (hitObj.userData.isRelic) {
                     const relicType = hitObj.userData.relicType;
                     SoundEngine.playTimeWarp();
                     spawn3DSpellBeam(spellOrigin, hitPoint, 0x10b981);
                     spawn3DImpactSparks(hitPoint, 0x10b981, 26);
-
                     if (relicType === 'TIME_ORB') {
                         GameState.timeSlowTimer = 6.0;
                         spawnFloatingCombatText(clientX, clientY, 'TIME STONE SURGE (6s SLOW-MO)!', 'text-emerald-300');
@@ -1516,18 +1226,14 @@
                         GameState.sanctumHealth = Math.min(100, GameState.sanctumHealth + 25);
                         spawnFloatingCombatText(clientX, clientY, '+25% SANCTUM SHIELD!', 'text-amber-300');
                     }
-
                     removeRelicByMesh(hitObj);
                     updateAllUI();
                     return;
                 }
 
-                // Otherwise, hit an Enemy Sub-Mesh (Core, Armor, or Shield)
                 const enemy = hitObj.userData.enemyRef;
                 const mult = hitObj.userData.damageMultiplier || 1.0;
-                const baseDamage = 28;
-                const finalDamage = Math.round(baseDamage * mult);
-
+                const finalDamage = Math.round(28 * mult);
                 enemy.hp -= finalDamage;
                 enemy.hitFlashTimer = 0.14;
 
@@ -1558,11 +1264,8 @@
                     spawnFloatingCombatText(clientX, clientY, `HIT +${pts}`, 'text-amber-200');
                 }
 
-                // Knockback physics along ray direction
                 const pushDir = raycaster.ray.direction.clone().setY(0).normalize();
                 enemy.group.position.addScaledVector(pushDir, 0.55);
-
-                // Update Enemy 3D Overhead Health Ring color & scale
                 const hpRatio = Math.max(0.05, enemy.hp / enemy.maxHp);
                 enemy.hpRing.scale.setScalar(hpRatio);
                 enemy.hpRing.material.color.setHex(hpRatio > 0.5 ? 0x10b981 : (hpRatio > 0.25 ? 0xf59e0b : 0xef4444));
@@ -1575,14 +1278,11 @@
                     destroyEnemy(enemy);
                 }
 
-                if (GameState.score > GameState.highScore) {
-                    GameState.highScore = GameState.score;
-                }
+                if (GameState.score > GameState.highScore) GameState.highScore = GameState.score;
                 updateAllUI();
                 return;
             }
 
-            // Case C: Missed Shot into the Astral Void
             GameState.combo = 1.0;
             SoundEngine.playSpellCast(false);
             const farPoint = raycaster.ray.origin.clone().addScaledVector(raycaster.ray.direction, 40);
@@ -1607,7 +1307,6 @@
             scene.remove(enemy.group);
             const idx = activeEnemies.indexOf(enemy);
             if (idx !== -1) activeEnemies.splice(idx, 1);
-
             GameState.enemiesRemainingInWave = Math.max(0, GameState.enemiesRemainingInWave - 1);
             checkWaveProgression();
         }
@@ -1625,7 +1324,7 @@
         }
 
         // ============================================================================
-        // PROMPT 5: ROUNDS, WAVES, LEVEL PROGRESSION & GAME-OVER / VICTORY CONDITIONS
+        // ROUNDS, WAVES, LEVEL PROGRESSION
         // ============================================================================
         const WAVE_NAMES = ['Kamar-Taj Courtyard', 'Mirror Dimension Fold', 'Dark Dimension Boss Breach'];
 
@@ -1636,11 +1335,7 @@
             GameState.waveTargetCount = 4 + waveNum * 2;
             GameState.enemiesRemainingInWave = GameState.waveTargetCount;
             GameState.enemiesSpawnedInWave = 0;
-
-            // Spawn a helpful interactive relic at the start of Wave 2 & 3
-            if (waveNum >= 2) {
-                spawnInteractiveRelic(waveNum === 2 ? 'TIME_ORB' : 'HEAL_ORB');
-            }
+            if (waveNum >= 2) spawnInteractiveRelic(waveNum === 2 ? 'TIME_ORB' : 'HEAL_ORB');
             updateAllUI();
         }
 
@@ -1652,7 +1347,6 @@
                     spawnFloatingCombatText(window.innerWidth / 2, window.innerHeight / 2, `WAVE ${GameState.wave} CLEARED! STARTING WAVE ${nextWave}`, 'text-emerald-300');
                     startWave(nextWave);
                 } else {
-                    // Victory across all 3 waves!
                     finishMatch(true);
                 }
             }
@@ -1666,49 +1360,30 @@
             if (isVictory) GameState.totalVictories++;
             if (GameState.score > GameState.highScore) GameState.highScore = GameState.score;
 
-            const accPct = GameState.shotsFired > 0
-                ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%`
-                : '0%';
-
-            // Validate Score via SecurityGuard (Prompt 8 Anti-Cheat Check)
+            const accPct = GameState.shotsFired > 0 ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%` : '0%';
             const check = SecurityGuard.validateScoreSubmission({
-                score: GameState.score,
-                shotsFired: GameState.shotsFired,
-                shotsHit: GameState.shotsHit,
-                crits: GameState.criticalHits,
-                wave: GameState.wave
+                score: GameState.score, shotsFired: GameState.shotsFired, shotsHit: GameState.shotsHit,
+                crits: GameState.criticalHits, wave: GameState.wave
             });
 
             const record = {
-                callsign: GameState.playerCallsign,
-                score: GameState.score,
-                wave: GameState.wave,
-                accuracy: accPct,
-                crits: GameState.criticalHits,
-                status: check.valid ? 'VERIFIED_RLS' : check.reason
+                callsign: GameState.playerCallsign, score: GameState.score, wave: GameState.wave,
+                accuracy: accPct, crits: GameState.criticalHits, status: check.valid ? 'VERIFIED_RLS' : check.reason
             };
             GameState.matchHistory.unshift(record);
 
-            // If Supabase client is configured, insert into `sanctum_scores` table
             if (supabaseClient && check.valid) {
                 try {
                     await supabaseClient.from('sanctum_scores').insert([{
-                        callsign: record.callsign,
-                        score: record.score,
-                        wave: record.wave,
-                        accuracy: record.accuracy,
-                        critical_hits: record.crits
+                        callsign: record.callsign, score: record.score, wave: record.wave,
+                        accuracy: record.accuracy, critical_hits: record.crits
                     }]);
-                } catch (e) {
-                    console.warn('Supabase score sync fallback:', e);
-                }
+                } catch (e) {}
             }
 
             showGameStateModal(
                 isVictory ? 'VICTORY • SANCTUM DEFENDED!' : 'SANCTUM BREACHED • GAME OVER',
-                isVictory
-                    ? 'You banished Dormammu’s Crystalline Sentinels back into the Dark Dimension!'
-                    : 'The Sanctum Nexus Shield collapsed under Dark Dimension bombardment.',
+                isVictory ? 'You banished Dormammu’s Crystalline Sentinels back into the Dark Dimension!' : 'The Sanctum Nexus Shield collapsed under Dark Dimension bombardment.',
                 isVictory ? 'SORCERER SUPREME VICTORY' : 'DIMENSIONAL BREACH',
                 isVictory ? 'Play Again' : 'Try Again'
             );
@@ -1717,32 +1392,19 @@
 
         function startNewGameSession() {
             clearAllArenaEntities();
-            GameState.score = 0;
-            GameState.combo = 1.0;
-            GameState.sanctumHealth = 100;
-            GameState.ammo = GameState.maxAmmo;
-            GameState.shotsFired = 0;
-            GameState.shotsHit = 0;
-            GameState.criticalHits = 0;
-            GameState.blockedByPillarHits = 0;
-            GameState.timeSlowTimer = 0;
-            GameState.isPlaying = true;
-            GameState.isPaused = false;
-
+            GameState.score = 0; GameState.combo = 1.0; GameState.sanctumHealth = 100;
+            GameState.ammo = GameState.maxAmmo; GameState.shotsFired = 0; GameState.shotsHit = 0;
+            GameState.criticalHits = 0; GameState.blockedByPillarHits = 0; GameState.timeSlowTimer = 0;
+            GameState.isPlaying = true; GameState.isPaused = false;
             document.getElementById('modal-game-state').classList.add('hidden');
             switchView('game');
             startWave(1);
         }
 
         // ============================================================================
-        // PROMPT 2 & 6: VIEW NAVIGATION & DYNAMIC DASHBOARD SYNCHRONIZATION
+        // VIEW NAVIGATION & DYNAMIC DASHBOARD SYNCHRONIZATION
         // ============================================================================
-        const views = {
-            auth: document.getElementById('view-auth'),
-            home: document.getElementById('view-home'),
-            dashboard: document.getElementById('view-dashboard'),
-            security: document.getElementById('view-security')
-        };
+        const views = { auth: document.getElementById('view-auth'), home: document.getElementById('view-home'), dashboard: document.getElementById('view-dashboard'), security: document.getElementById('view-security') };
         const hudOverlay = document.getElementById('hud-overlay');
         const modalGameState = document.getElementById('modal-game-state');
 
@@ -1754,11 +1416,8 @@
             if (targetView === 'game') {
                 hudOverlay.classList.remove('hidden');
                 reticleEl.classList.remove('hidden');
-                if (!GameState.isPlaying) {
-                    startNewGameSession();
-                } else {
-                    GameState.isPaused = false;
-                }
+                if (!GameState.isPlaying) startNewGameSession();
+                else GameState.isPaused = false;
             } else {
                 hudOverlay.classList.add('hidden');
                 reticleEl.classList.add('hidden');
@@ -1773,30 +1432,19 @@
             document.getElementById('modal-subtitle').textContent = subtitle;
             document.getElementById('modal-badge').textContent = badgeText;
             document.getElementById('btn-modal-primary').textContent = primaryBtnText;
-
-            const accPct = GameState.shotsFired > 0
-                ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%`
-                : '0%';
+            const accPct = GameState.shotsFired > 0 ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%` : '0%';
             document.getElementById('modal-score').textContent = GameState.score.toLocaleString();
             document.getElementById('modal-acc').textContent = accPct;
             document.getElementById('modal-wave').textContent = `${GameState.wave} / ${GameState.maxWaves}`;
-
             modalGameState.classList.remove('hidden');
         }
 
         function updateAllUI() {
-            const accPct = GameState.shotsFired > 0
-                ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%`
-                : '0%';
-
-            // Top Nav & Home
+            const accPct = GameState.shotsFired > 0 ? `${Math.round((GameState.shotsHit / GameState.shotsFired) * 100)}%` : '0%';
             document.getElementById('nav-high-score').textContent = GameState.highScore.toLocaleString();
             document.getElementById('home-player-name').textContent = GameState.playerCallsign;
-            document.getElementById('nav-auth-btn').textContent = GameState.isAuthenticated
-                ? `✧ ${GameState.playerCallsign}`
-                : 'Sorcerer Login';
+            document.getElementById('nav-auth-btn').textContent = GameState.isAuthenticated ? `✧ ${GameState.playerCallsign}` : 'Sorcerer Login';
 
-            // In-Game Combat HUD
             document.getElementById('hud-wave').textContent = `WAVE ${GameState.wave} / ${GameState.maxWaves}`;
             document.getElementById('hud-realm-tag').textContent = WAVE_NAMES[GameState.wave - 1] || 'Astral Sanctum';
             document.getElementById('hud-score').textContent = GameState.score.toLocaleString();
@@ -1806,7 +1454,6 @@
             document.getElementById('hud-ammo-text').textContent = `${GameState.ammo} / ${GameState.maxAmmo} [R]`;
             document.getElementById('hud-ammo-bar').style.width = `${(GameState.ammo / GameState.maxAmmo) * 100}%`;
 
-            // Connected Analytics Dashboard
             document.getElementById('dash-high-score').textContent = GameState.highScore.toLocaleString();
             document.getElementById('dash-current-score').textContent = GameState.score.toLocaleString();
             document.getElementById('dash-accuracy').textContent = accPct;
@@ -1814,19 +1461,11 @@
             document.getElementById('dash-games-won').textContent = `${GameState.totalGamesPlayed} / ${GameState.totalVictories}`;
             document.getElementById('dash-max-wave').textContent = `Wave ${GameState.highestWaveReached}`;
 
-            // Render Leaderboard Rows Safely via DOM textContent (XSS-Safe)
             const tbody = document.getElementById('leaderboard-tbody');
             tbody.innerHTML = '';
             GameState.matchHistory.slice(0, 8).forEach((row) => {
                 const tr = document.createElement('tr');
-                const cols = [
-                    row.callsign,
-                    Number(row.score).toLocaleString(),
-                    `Wave ${row.wave}`,
-                    row.accuracy,
-                    row.crits,
-                    row.status
-                ];
+                const cols = [row.callsign, Number(row.score).toLocaleString(), `Wave ${row.wave}`, row.accuracy, row.crits, row.status];
                 cols.forEach((val, idx) => {
                     const td = document.createElement('td');
                     td.className = 'py-2 pr-3 ' + (idx === 1 ? 'text-amber-300 font-bold' : (idx === 5 ? 'text-emerald-400' : 'text-amber-100'));
@@ -1838,145 +1477,78 @@
         }
 
         // ============================================================================
-        // EVENT LISTENERS (Navigation, Auth, OTP, Controls, Diagnostics)
+        // EVENT LISTENERS (Navigation, Controls, Diagnostics)
         // ============================================================================
         document.querySelectorAll('[data-nav]').forEach((btn) => {
-            btn.addEventListener('click', () => {
-                SoundEngine.playUiClick();
-                switchView(btn.getAttribute('data-nav'));
-            });
+            btn.addEventListener('click', () => { SoundEngine.playUiClick(); switchView(btn.getAttribute('data-nav')); });
         });
-
-        // Audio Toggle Button
         document.getElementById('btn-audio-toggle').addEventListener('click', () => {
             const isOn = SoundEngine.toggle();
             document.getElementById('audio-icon').textContent = isOn ? '🔊' : '🔇';
             document.getElementById('audio-status-text').textContent = isOn ? 'SFX ON' : 'MUTED';
         });
-
-        document.getElementById('btn-launch-game').addEventListener('click', () => {
-            SoundEngine.playWaveFanfare(true);
-            startNewGameSession();
-        });
+        document.getElementById('btn-launch-game').addEventListener('click', () => { SoundEngine.playWaveFanfare(true); startNewGameSession(); });
         document.getElementById('btn-resume-from-dash').addEventListener('click', () => switchView('game'));
-        document.getElementById('btn-sync-supabase').addEventListener('click', () => {
-            SoundEngine.playUiClick();
-            fetchSupabaseLeaderboard();
-        });
+        document.getElementById('btn-sync-supabase').addEventListener('click', () => { SoundEngine.playUiClick(); fetchSupabaseLeaderboard(); });
 
-        // Difficulty Buttons
         document.querySelectorAll('.diff-btn').forEach((btn) => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.diff-btn').forEach(b => {
-                    b.classList.remove('btn-mystic');
-                    b.classList.add('btn-secondary');
-                });
-                btn.classList.remove('btn-secondary');
-                btn.classList.add('btn-mystic');
+                document.querySelectorAll('.diff-btn').forEach(b => { b.classList.remove('btn-mystic'); b.classList.add('btn-secondary'); });
+                btn.classList.remove('btn-secondary'); btn.classList.add('btn-mystic');
                 const d = btn.getAttribute('data-diff');
-                GameState.difficulty = d;
-                GameState.diffMultiplier = d === 'initiate' ? 1.0 : (d === 'master' ? 1.35 : 1.75);
+                GameState.difficulty = d; GameState.diffMultiplier = d === 'initiate' ? 1.0 : (d === 'master' ? 1.35 : 1.75);
             });
         });
 
-        // Pause / Resume / Restart
         function togglePauseGame() {
             if (GameState.currentView !== 'game' || !GameState.isPlaying) return;
             GameState.isPaused = !GameState.isPaused;
             if (GameState.isPaused) {
-                showGameStateModal(
-                    'SANCTUM TEMPORAL PAUSE',
-                    'The Eye of Agamotto holds all Dark Dimension Sentinels in stasis.',
-                    'PAUSED',
-                    'Resume Defense'
-                );
-            } else {
-                modalGameState.classList.add('hidden');
-            }
+                showGameStateModal('SANCTUM TEMPORAL PAUSE', 'The Eye of Agamotto holds all Dark Dimension Sentinels in stasis.', 'PAUSED', 'Resume Defense');
+            } else { modalGameState.classList.add('hidden'); }
         }
-
         document.getElementById('btn-pause-game').addEventListener('click', togglePauseGame);
         document.getElementById('btn-modal-primary').addEventListener('click', () => {
-            if (GameState.isPlaying) {
-                GameState.isPaused = false;
-                modalGameState.classList.add('hidden');
-            } else {
-                startNewGameSession();
-            }
+            if (GameState.isPlaying) { GameState.isPaused = false; modalGameState.classList.add('hidden'); } else { startNewGameSession(); }
         });
         document.getElementById('btn-modal-restart').addEventListener('click', () => startNewGameSession());
         document.getElementById('btn-modal-dashboard').addEventListener('click', () => switchView('dashboard'));
-
-        // Recharge Mana & Time Surge Buttons
-        document.getElementById('btn-reload-mana').addEventListener('click', () => {
-            GameState.ammo = GameState.maxAmmo;
-            SoundEngine.playReload();
-            updateAllUI();
-        });
+        document.getElementById('btn-reload-mana').addEventListener('click', () => { GameState.ammo = GameState.maxAmmo; SoundEngine.playReload(); updateAllUI(); });
         document.getElementById('btn-time-surge').addEventListener('click', () => {
-            if (GameState.timeSlowTimer <= 0) {
-                GameState.timeSlowTimer = 4.5;
-                SoundEngine.playTimeWarp();
-                spawnFloatingCombatText(window.innerWidth / 2, window.innerHeight / 2, 'EYE OF AGAMOTTO TIME SURGE!', 'text-emerald-300');
-            }
+            if (GameState.timeSlowTimer <= 0) { GameState.timeSlowTimer = 4.5; SoundEngine.playTimeWarp(); spawnFloatingCombatText(window.innerWidth / 2, window.innerHeight / 2, 'EYE OF AGAMOTTO TIME SURGE!', 'text-emerald-300'); }
         });
 
-        // Keyboard Shortcuts
         const keysHeld = { KeyA: false, KeyD: false, ArrowLeft: false, ArrowRight: false };
         window.addEventListener('keydown', (e) => {
             if (e.code in keysHeld) keysHeld[e.code] = true;
-            if (e.code === 'KeyR' && GameState.isPlaying && !GameState.isPaused) {
-                GameState.ammo = GameState.maxAmmo;
-                SoundEngine.playReload();
-                updateAllUI();
-            }
-            if ((e.code === 'KeyP' || e.code === 'Escape') && GameState.currentView === 'game') {
-                togglePauseGame();
-            }
-            if (e.code === 'KeyT' && GameState.isPlaying && !GameState.isPaused && GameState.timeSlowTimer <= 0) {
-                GameState.timeSlowTimer = 4.5;
-                SoundEngine.playTimeWarp();
-            }
+            if (e.code === 'KeyR' && GameState.isPlaying && !GameState.isPaused) { GameState.ammo = GameState.maxAmmo; SoundEngine.playReload(); updateAllUI(); }
+            if ((e.code === 'KeyP' || e.code === 'Escape') && GameState.currentView === 'game') togglePauseGame();
+            if (e.code === 'KeyT' && GameState.isPlaying && !GameState.isPaused && GameState.timeSlowTimer <= 0) { GameState.timeSlowTimer = 4.5; SoundEngine.playTimeWarp(); }
             if (e.code === 'KeyM') {
                 const isOn = SoundEngine.toggle();
                 document.getElementById('audio-icon').textContent = isOn ? '🔊' : '🔇';
                 document.getElementById('audio-status-text').textContent = isOn ? 'SFX ON' : 'MUTED';
             }
         });
-        window.addEventListener('keyup', (e) => {
-            if (e.code in keysHeld) keysHeld[e.code] = false;
-        });
-
-        // Mouse Move & Click Raycasting on the 3D Canvas
+        window.addEventListener('keyup', (e) => { if (e.code in keysHeld) keysHeld[e.code] = false; });
         window.addEventListener('pointermove', (e) => {
-            pointerNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
-            pointerNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
-            if (GameState.currentView === 'game') {
-                reticleEl.style.left = `${e.clientX}px`;
-                reticleEl.style.top = `${e.clientY}px`;
-            }
+            pointerNDC.x = (e.clientX / window.innerWidth) * 2 - 1; pointerNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            if (GameState.currentView === 'game') { reticleEl.style.left = `${e.clientX}px`; reticleEl.style.top = `${e.clientY}px`; }
         });
-
         renderer.domElement.addEventListener('pointerdown', (e) => {
             if (e.button !== 0) return;
-            if (GameState.currentView === 'game' && GameState.isPlaying && !GameState.isPaused) {
-                fireEldritchRaycast(e.clientX, e.clientY);
-            }
+            if (GameState.currentView === 'game' && GameState.isPlaying && !GameState.isPaused) fireEldritchRaycast(e.clientX, e.clientY);
         });
 
         // ============================================================================
-        // SUPABASE AUTH & OTP HANDLERS (Prompt 2 & Prompt 8)
+        // FOOLPROOF SUPABASE PASSWORD AUTHENTICATION
         // ============================================================================
-        let currentAuthMode = 'otp';
+        let currentAuthMode = 'login';
         const authBanner = document.getElementById('auth-status-banner');
 
         function showAuthMessage(msg, isError = false) {
             authBanner.classList.remove('hidden');
-            authBanner.className = `mb-4 p-3 rounded-xl text-xs border ${
-                isError
-                    ? 'bg-rose-500/20 border-rose-400/50 text-rose-200'
-                    : 'bg-emerald-500/20 border-emerald-400/50 text-emerald-200'
-            }`;
+            authBanner.className = `mb-4 p-3 rounded-xl text-xs border ${isError ? 'bg-rose-500/20 border-rose-400/50 text-rose-200' : 'bg-emerald-500/20 border-emerald-400/50 text-emerald-200'}`;
             authBanner.textContent = msg;
         }
 
@@ -1987,37 +1559,8 @@
                     b.className = 'auth-mode-btn py-1.5 rounded-lg font-semibold text-amber-200/70';
                 });
                 btn.className = 'auth-mode-btn py-1.5 rounded-lg font-semibold bg-amber-500/25 text-amber-200 border border-amber-400/40';
-
-                document.getElementById('auth-otp-group').classList.toggle('hidden', currentAuthMode !== 'otp');
-                document.getElementById('auth-password-group').classList.toggle('hidden', currentAuthMode === 'otp');
-                document.getElementById('btn-auth-submit').textContent =
-                    currentAuthMode === 'otp'
-                        ? 'Verify OTP & Enter Sanctum'
-                        : (currentAuthMode === 'login' ? 'Sign In with Password' : 'Create Sorcerer Account');
+                document.getElementById('btn-auth-submit').textContent = currentAuthMode === 'login' ? 'Sign In to Sanctum' : 'Create Sorcerer Account';
             });
-        });
-
-        document.getElementById('btn-send-otp').addEventListener('click', async () => {
-            const email = document.getElementById('auth-email').value;
-            if (!SecurityGuard.validateEmail(email)) {
-                showAuthMessage('Please enter a valid Sanctum email address before requesting an OTP.', true);
-                return;
-            }
-            if (supabaseClient) {
-                const { error } = await supabaseClient.auth.signInWithOtp({ email });
-                if (error) {
-                    showAuthMessage(`Supabase OTP Error: ${error.message}`, true);
-                } else {
-                    showAuthMessage(`6-digit OTP dispatched to ${email} via Supabase Auth!`);
-                }
-            } else {
-                // Cryptographic random 6-digit OTP for immediate classroom evaluation
-                const arr = new Uint32Array(1);
-                crypto.getRandomValues(arr);
-                generatedDemoOtp = String(100000 + (arr[0] % 900000));
-                document.getElementById('auth-otp-code').value = generatedDemoOtp;
-                showAuthMessage(`Demo Mode OTP Generated: ${generatedDemoOtp} (Auto-filled for Lab Evaluation)`);
-            }
         });
 
         document.getElementById('auth-form').addEventListener('submit', async (e) => {
@@ -2025,43 +1568,22 @@
             const callsignCheck = SecurityGuard.validateCallsign(document.getElementById('auth-callsign').value);
             const email = document.getElementById('auth-email').value;
             const password = document.getElementById('auth-password').value;
-            const otpCode = document.getElementById('auth-otp-code').value.trim();
 
-            if (!callsignCheck.valid) {
-                showAuthMessage(callsignCheck.error, true);
-                return;
-            }
-            if (!SecurityGuard.validateEmail(email)) {
-                showAuthMessage('Invalid email address format.', true);
-                return;
-            }
+            if (!callsignCheck.valid) { showAuthMessage(callsignCheck.error, true); return; }
+            if (!SecurityGuard.validateEmail(email)) { showAuthMessage('Invalid email address format.', true); return; }
+            if (!SecurityGuard.validatePassword(password)) { showAuthMessage('Password must be at least 8 characters and include a number.', true); return; }
 
-            if (currentAuthMode === 'otp') {
-                if (!/^\d{6}$/.test(otpCode)) {
-                    showAuthMessage('Please enter a valid 6-digit numeric OTP code (click "Send OTP Code" first).', true);
-                    return;
-                }
-                if (supabaseClient) {
-                    const { error } = await supabaseClient.auth.verifyOtp({ email, token: otpCode, type: 'email' });
-                    if (error) {
-                        showAuthMessage(`OTP Verification Failed: ${error.message}`, true);
-                        return;
+            if (supabaseClient) {
+                if (currentAuthMode === 'signup') {
+                    const { error } = await supabaseClient.auth.signUp({ email, password });
+                    if (error) { showAuthMessage(`Registration Error: ${error.message}`, true); return; }
+                    else {
+                        showAuthMessage('Account created! Please check your email for the confirmation link to enter the Sanctum.');
+                        return; // Halt here so the user goes to their email inbox
                     }
-                }
-            } else {
-                if (!SecurityGuard.validatePassword(password)) {
-                    showAuthMessage('Password must be at least 8 characters and include a number.', true);
-                    return;
-                }
-                if (supabaseClient) {
-                    const fn = currentAuthMode === 'signup'
-                        ? supabaseClient.auth.signUp({ email, password })
-                        : supabaseClient.auth.signInWithPassword({ email, password });
-                    const { error } = await fn;
-                    if (error) {
-                        showAuthMessage(`Supabase Auth Error: ${error.message}`, true);
-                        return;
-                    }
+                } else {
+                    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                    if (error) { showAuthMessage(`Login Error: ${error.message}`, true); return; }
                 }
             }
 
@@ -2078,72 +1600,29 @@
             switchView('home');
         });
 
-        // .env Modal Handlers
-        document.getElementById('btn-open-env-modal').addEventListener('click', () => {
-            document.getElementById('modal-env-config').classList.remove('hidden');
-        });
-        document.getElementById('btn-close-env-modal').addEventListener('click', () => {
-            document.getElementById('modal-env-config').classList.add('hidden');
-        });
-        document.getElementById('btn-connect-supabase').addEventListener('click', () => {
-            const url = document.getElementById('env-supabase-url').value;
-            const key = document.getElementById('env-supabase-key').value;
-            if (initSupabaseClient(url, key)) {
-                showAuthMessage('Connected to Live Supabase Project successfully!');
-                document.getElementById('modal-env-config').classList.add('hidden');
-            } else {
-                showAuthMessage('Please provide a valid Supabase Project URL and public Anon Key.', true);
-            }
-        });
-
-        // Profile & Settings Handlers
         document.getElementById('btn-save-profile').addEventListener('click', () => {
             const res = SecurityGuard.validateCallsign(document.getElementById('profile-callsign-input').value);
-            if (res.valid) {
-                GameState.playerCallsign = res.value;
-                SoundEngine.playUiClick();
-                updateAllUI();
-            }
+            if (res.valid) { GameState.playerCallsign = res.value; SoundEngine.playUiClick(); updateAllUI(); }
         });
         document.getElementById('setting-orbit-speed').addEventListener('input', (e) => {
             GameState.orbitSpeedMultiplier = parseFloat(e.target.value);
             document.getElementById('orbit-speed-label').textContent = `${GameState.orbitSpeedMultiplier.toFixed(1)}x`;
         });
         document.getElementById('setting-audio-vol').addEventListener('input', (e) => {
-            const pct = parseInt(e.target.value, 10);
-            SoundEngine.volume = pct / 100;
-            document.getElementById('audio-vol-label').textContent = `${pct}%`;
-            SoundEngine.playUiClick();
+            const pct = parseInt(e.target.value, 10); SoundEngine.volume = pct / 100;
+            document.getElementById('audio-vol-label').textContent = `${pct}%`; SoundEngine.playUiClick();
         });
         document.getElementById('btn-reset-stats').addEventListener('click', () => {
-            GameState.score = 0;
-            GameState.shotsFired = 0;
-            GameState.shotsHit = 0;
-            GameState.criticalHits = 0;
-            updateAllUI();
+            GameState.score = 0; GameState.shotsFired = 0; GameState.shotsHit = 0; GameState.criticalHits = 0; updateAllUI();
         });
 
-        // ============================================================================
-        // PROMPT 7: AUTOMATED DIAGNOSTIC & SECURITY TEST SUITE
-        // ============================================================================
         document.getElementById('btn-run-diagnostics').addEventListener('click', () => {
             const list = document.getElementById('diagnostic-results-list');
             list.innerHTML = '';
-
-            // Run 8 live verification checks on the 3D scene, raycaster, and security guard
-            const testRay = new THREE.Raycaster();
-            testRay.set(new THREE.Vector3(0, 4.25, 20), new THREE.Vector3(0, 0, -1));
+            const testRay = new THREE.Raycaster(); testRay.set(new THREE.Vector3(0, 4.25, 20), new THREE.Vector3(0, 0, -1));
             const pillarHits = testRay.intersectObjects(obstacleMeshes, false);
-
             const xssAttempt = SecurityGuard.validateCallsign('<script>alert(1)<\/script>DrStrange');
-            const tamperedScore = SecurityGuard.validateScoreSubmission({
-                score: 9999999,
-                shotsFired: 2,
-                shotsHit: 2,
-                crits: 2,
-                wave: 1
-            });
-
+            const tamperedScore = SecurityGuard.validateScoreSubmission({ score: 9999999, shotsFired: 2, shotsHit: 2, crits: 2, wave: 1 });
             const results = [
                 { name: '1. WebGLRenderer & Scene Graph Integrity', pass: renderer.info.programs.length >= 0, detail: `${scene.children.length} root 3D nodes active` },
                 { name: '2. Obstacle Layer Raycast Filtering', pass: obstacleMeshes.length === 4, detail: '4 Sanctum Stone Pillars registered in obstacleMeshes[]' },
@@ -2154,20 +1633,11 @@
                 { name: '7. Dashboard State Synchronization', pass: document.getElementById('leaderboard-tbody').children.length > 0, detail: `${GameState.matchHistory.length} match records synced` },
                 { name: '8. Responsive Viewport & Aspect Ratio Matrix', pass: Math.abs(camera.aspect - window.innerWidth / window.innerHeight) < 0.01, detail: `Aspect ${camera.aspect.toFixed(2)} synced` }
             ];
-
             results.forEach((r) => {
-                const row = document.createElement('div');
-                row.className = 'p-2 rounded-lg bg-black/60 border border-amber-500/20 flex items-center justify-between gap-2';
-                const left = document.createElement('span');
-                left.className = 'text-amber-100';
-                left.textContent = `${r.name} — ${r.detail}`;
-                const badge = document.createElement('span');
-                badge.className = r.pass
-                    ? 'px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold'
-                    : 'px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold';
-                badge.textContent = r.pass ? 'PASS' : 'FAIL';
-                row.append(left, badge);
-                list.appendChild(row);
+                const row = document.createElement('div'); row.className = 'p-2 rounded-lg bg-black/60 border border-amber-500/20 flex items-center justify-between gap-2';
+                const left = document.createElement('span'); left.className = 'text-amber-100'; left.textContent = `${r.name} — ${r.detail}`;
+                const badge = document.createElement('span'); badge.className = r.pass ? 'px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold' : 'px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold';
+                badge.textContent = r.pass ? 'PASS' : 'FAIL'; row.append(left, badge); list.appendChild(row);
             });
         });
 
@@ -2179,163 +1649,78 @@
 
         function animate() {
             requestAnimationFrame(animate);
-
             const rawDt = Math.min(clock.getDelta(), 0.1);
             const elapsed = clock.getElapsedTime();
 
-            // Time Stone Slow-Mo Factor
             if (GameState.timeSlowTimer > 0 && GameState.isPlaying && !GameState.isPaused) {
                 GameState.timeSlowTimer = Math.max(0, GameState.timeSlowTimer - rawDt);
             }
             const gameDt = (GameState.timeSlowTimer > 0 ? rawDt * 0.32 : rawDt);
 
-            // 1. Camera Orbit Controls around the Sanctum Arena
             if (GameState.currentView === 'game' && GameState.isPlaying && !GameState.isPaused) {
                 const orbitDir = (keysHeld.KeyD || keysHeld.ArrowRight ? 1 : 0) - (keysHeld.KeyA || keysHeld.ArrowLeft ? 1 : 0);
                 cameraOrbitAngle += orbitDir * rawDt * 1.45 * GameState.orbitSpeedMultiplier;
             } else {
-                // Gentle cinematic orbit when on Home / Dashboard / Auth screens
                 cameraOrbitAngle += rawDt * 0.18;
             }
 
-            camera.position.set(
-                Math.sin(cameraOrbitAngle) * CAMERA_ORBIT_RADIUS,
-                CAMERA_HEIGHT,
-                Math.cos(cameraOrbitAngle) * CAMERA_ORBIT_RADIUS
-            );
+            camera.position.set(Math.sin(cameraOrbitAngle) * CAMERA_ORBIT_RADIUS, CAMERA_HEIGHT, Math.cos(cameraOrbitAngle) * CAMERA_ORBIT_RADIUS);
             camera.lookAt(0, 2.4, 0);
 
-            // 2. Animate Sanctum Central Nexus & Outer Dark Dimension Rifts
-            sanctumNexusOcta.rotation.y += rawDt * 1.2;
-            sanctumNexusOcta.position.y = Math.sin(elapsed * 2.5) * 0.2;
-            sanctumNexusRing.rotation.x = Math.sin(elapsed * 1.4) * 0.6;
-            sanctumNexusRing.rotation.y += rawDt * 1.8;
+            sanctumNexusOcta.rotation.y += rawDt * 1.2; sanctumNexusOcta.position.y = Math.sin(elapsed * 2.5) * 0.2;
+            sanctumNexusRing.rotation.x = Math.sin(elapsed * 1.4) * 0.6; sanctumNexusRing.rotation.y += rawDt * 1.8;
+            riftPortals.forEach((rp, idx) => { rp.outerRing.rotation.z += rawDt * (idx % 2 === 0 ? 1.5 : -1.5); });
 
-            riftPortals.forEach((rp, idx) => {
-                rp.outerRing.rotation.z += rawDt * (idx % 2 === 0 ? 1.5 : -1.5);
-            });
-
-            // 3. Active Combat Spawning, Sentinel Movement & Collision Checks
             if (GameState.isPlaying && !GameState.isPaused) {
                 updateHoverRaycast();
-
-                // Passive Mana Regeneration
-                if (GameState.ammo < GameState.maxAmmo && Math.sin(elapsed * 5) > 0.96) {
-                    // Encourage manual [R] reload or steady rhythm
-                }
-
-                // Spawn Sentinels for current Wave
                 spawnCooldown -= gameDt;
                 if (spawnCooldown <= 0 && GameState.enemiesSpawnedInWave < GameState.waveTargetCount && activeEnemies.length < 5) {
                     const isFinalBoss = (GameState.wave === 3 && GameState.enemiesSpawnedInWave === GameState.waveTargetCount - 1);
-                    spawnSentinel(isFinalBoss);
-                    GameState.enemiesSpawnedInWave++;
-                    spawnCooldown = Math.max(1.1, 2.8 - GameState.wave * 0.45);
+                    spawnSentinel(isFinalBoss); GameState.enemiesSpawnedInWave++; spawnCooldown = Math.max(1.1, 2.8 - GameState.wave * 0.45);
                 }
 
-                // Update Active Sentinels
                 for (let i = activeEnemies.length - 1; i >= 0; i--) {
                     const e = activeEnemies[i];
-                    e.coreMesh.rotation.y += gameDt * 3.2;
-                    e.armorMesh.rotation.x += gameDt * 1.1;
-                    e.armorMesh.rotation.y -= gameDt * 1.4;
-                    if (e.shieldMesh) {
-                        e.shieldMesh.rotation.z += gameDt * 2.6;
-                        e.shieldMesh.rotation.x = Math.sin(elapsed * 1.5 + e.strafePhase) * 0.45;
-                    }
-
-                    // Hit Flash feedback
-                    if (e.hitFlashTimer > 0) {
-                        e.hitFlashTimer -= rawDt;
-                        e.armorMesh.material.emissiveIntensity = 3.2;
-                    } else {
-                        e.armorMesh.material.emissiveIntensity = 1.1;
-                    }
-
-                    // Make overhead HP ring face camera
+                    e.coreMesh.rotation.y += gameDt * 3.2; e.armorMesh.rotation.x += gameDt * 1.1; e.armorMesh.rotation.y -= gameDt * 1.4;
+                    if (e.shieldMesh) { e.shieldMesh.rotation.z += gameDt * 2.6; e.shieldMesh.rotation.x = Math.sin(elapsed * 1.5 + e.strafePhase) * 0.45; }
+                    if (e.hitFlashTimer > 0) { e.hitFlashTimer -= rawDt; e.armorMesh.material.emissiveIntensity = 3.2; } else { e.armorMesh.material.emissiveIntensity = 1.1; }
                     e.hpRing.lookAt(camera.position);
 
-                    // Move toward Center Sanctum Core (0, 2.2, 0) with orbital strafing
                     const toCenter = new THREE.Vector3(0, e.group.position.y, 0).sub(e.group.position);
-                    const distToCenter = toCenter.length();
-                    toCenter.normalize();
-
+                    const distToCenter = toCenter.length(); toCenter.normalize();
                     const tangent = new THREE.Vector3(-toCenter.z, 0, toCenter.x);
                     const strafeAmount = Math.sin(elapsed * 2.2 + e.strafePhase) * (GameState.wave >= 2 ? 2.4 : 0.8);
+                    e.group.position.addScaledVector(toCenter, e.speed * gameDt); e.group.position.addScaledVector(tangent, strafeAmount * gameDt);
 
-                    e.group.position.addScaledVector(toCenter, e.speed * gameDt);
-                    e.group.position.addScaledVector(tangent, strafeAmount * gameDt);
-
-                    // Collision with Central Sanctum Core!
                     if (distToCenter < 2.1) {
-                        const dmg = e.isBoss ? 34 : 16;
-                        GameState.sanctumHealth = Math.max(0, GameState.sanctumHealth - dmg);
-                        SoundEngine.playBlockedHit();
-                        spawn3DImpactSparks(sanctumCoreGroup.position, 0xef4444, 30);
-                        destroyEnemy(e);
-                        updateAllUI();
-
-                        if (GameState.sanctumHealth <= 0) {
-                            finishMatch(false);
-                            break;
-                        }
+                        const dmg = e.isBoss ? 34 : 16; GameState.sanctumHealth = Math.max(0, GameState.sanctumHealth - dmg);
+                        SoundEngine.playBlockedHit(); spawn3DImpactSparks(sanctumCoreGroup.position, 0xef4444, 30); destroyEnemy(e); updateAllUI();
+                        if (GameState.sanctumHealth <= 0) { finishMatch(false); break; }
                     }
                 }
 
-                // Update Interactive Floating Relics
                 for (let i = activeRelics.length - 1; i >= 0; i--) {
-                    const r = activeRelics[i];
-                    r.life -= rawDt;
-                    r.mesh.rotation.y += rawDt * 2.2;
-                    r.mesh.rotation.x += rawDt * 1.4;
+                    const r = activeRelics[i]; r.life -= rawDt; r.mesh.rotation.y += rawDt * 2.2; r.mesh.rotation.x += rawDt * 1.4;
                     if (r.life <= 0) removeRelicByMesh(r.mesh);
                 }
             }
 
-            // 4. Update 3D Raycast Spell Beams & Impact Sparks
             for (let i = activeBeams.length - 1; i >= 0; i--) {
-                const b = activeBeams[i];
-                b.life -= rawDt;
-                b.mesh.material.opacity = Math.max(0, b.life / b.maxLife);
-                if (b.life <= 0) {
-                    scene.remove(b.mesh);
-                    b.mesh.geometry.dispose();
-                    b.mesh.material.dispose();
-                    activeBeams.splice(i, 1);
-                }
+                const b = activeBeams[i]; b.life -= rawDt; b.mesh.material.opacity = Math.max(0, b.life / b.maxLife);
+                if (b.life <= 0) { scene.remove(b.mesh); b.mesh.geometry.dispose(); b.mesh.material.dispose(); activeBeams.splice(i, 1); }
             }
 
             for (let i = activeSparks.length - 1; i >= 0; i--) {
-                const s = activeSparks[i];
-                s.life -= rawDt;
-                const posAttr = s.points.geometry.attributes.position;
-                for (let j = 0; j < s.vel.length; j++) {
-                    posAttr.array[j * 3] += s.vel[j].x * rawDt;
-                    posAttr.array[j * 3 + 1] += s.vel[j].y * rawDt;
-                    posAttr.array[j * 3 + 2] += s.vel[j].z * rawDt;
-                }
-                posAttr.needsUpdate = true;
-                s.points.material.opacity = Math.max(0, s.life * 2.2);
-                if (s.life <= 0) {
-                    scene.remove(s.points);
-                    s.points.geometry.dispose();
-                    s.points.material.dispose();
-                    activeSparks.splice(i, 1);
-                }
+                const s = activeSparks[i]; s.life -= rawDt; const posAttr = s.points.geometry.attributes.position;
+                for (let j = 0; j < s.vel.length; j++) { posAttr.array[j * 3] += s.vel[j].x * rawDt; posAttr.array[j * 3 + 1] += s.vel[j].y * rawDt; posAttr.array[j * 3 + 2] += s.vel[j].z * rawDt; }
+                posAttr.needsUpdate = true; s.points.material.opacity = Math.max(0, s.life * 2.2);
+                if (s.life <= 0) { scene.remove(s.points); s.points.geometry.dispose(); s.points.material.dispose(); activeSparks.splice(i, 1); }
             }
-
             renderer.render(scene, camera);
         }
 
-        // Initialize UI and start loop
-        updateAllUI();
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        updateAllUI(); animate();
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
     </script>
 </body>
 </html>
